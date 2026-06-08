@@ -18,7 +18,6 @@ export const deploymentsRouter = router({
       repoUrl:        z.string().url(),
       dockerfilePath: z.string().default("Dockerfile"),
       exposedPort:    z.number().int().min(1).max(65535),
-      customLabels: z.record(z.string(), z.string()).optional(),
     }))
     .mutation(async ({ input }) => {
       const id = nanoid(8).toLowerCase().replace(/[^a-z0-9]/g, '');
