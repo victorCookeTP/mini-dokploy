@@ -132,4 +132,6 @@ This project was scaffolded and bolierplated with Claude (Anthropic). Specifical
 
 - **Docker Swarm + Traefik integration decisions** — the choice to use overlay networks, `mode: host` port binding, and Swarm-mode label placement (`deploy.labels` vs top-level) required reading official docs and iterating manually. AI suggestions here needed verification against actual Traefik v3 docs.
 - **Security model** — decisions about what to expose (Docker socket, build context) were made by hand with deliberate thought about the threat model.
+- **All the rest** was done without AI help!
+
 

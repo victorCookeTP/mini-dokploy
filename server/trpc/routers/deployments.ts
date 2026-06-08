@@ -21,7 +21,7 @@ export const deploymentsRouter = router({
       customLabels: z.record(z.string(), z.string()).optional(),
     }))
     .mutation(async ({ input }) => {
-      const id = nanoid(8).toLowerCase();
+      const id = nanoid(8).toLowerCase().replace(/[^a-z0-9]/g, '');
       const subdomain = `app-${id}`;
       await db.insert(deployments).values({
         id,

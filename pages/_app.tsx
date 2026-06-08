@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:3001/api/trpc",
+          url: "/api/trpc",
         }),
       ],
     })
