@@ -1,0 +1,45 @@
+version: "3.8"
+
+networks:
+  traefik-public:
+    driver: overlay
+    attachable: true
+
+services:
+  traefik:
+    image: traefik:v3.0
+    command:
+      - --api.insecure=true
+      - --providers.swarm=true
+      - --providers.swarm.exposedByDefault=false
+      - --providers.swarm.network=mini-dokploy_traefik-public
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.address=[::]:80   # IPv6
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host        # <-- key change: bypasses Swarm's ingress mesh
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - traefik-public
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+  whoami:
+    image: traefik/whoami
+    networks:
+      - traefik-public
+    deploy:
+      replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.whoami.rule=Host(`whoami.127.0.0.1.sslip.io`)"
+        - "traefik.http.services.whoami.loadbalancer.server.port=80"

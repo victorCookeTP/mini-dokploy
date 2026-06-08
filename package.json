@@ -3,22 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "eslint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.101.0",
+    "@trpc/client": "^11.17.0",
+    "@trpc/next": "^11.17.0",
+    "@trpc/react-query": "^11.17.0",
+    "@trpc/server": "^11.17.0",
+    "better-sqlite3": "^12.10.0",
+    "dockerode": "^5.0.0",
+    "drizzle-orm": "^0.45.2",
+    "execa": "^9.6.1",
+    "nanoid": "^5.1.11",
     "next": "16.2.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "simple-git": "^3.36.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/dockerode": "^4.0.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.5.0",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.0",
     "typescript": "^5"
   }
 }
