@@ -48,7 +48,7 @@ The Traefik dashboard is available at `http://localhost:8080`.
 
 ---
 
-An example .env is at `cp .env.example .env`
+An example .env is at `.env.example`
 
 ## 2. Architecture
 
@@ -111,6 +111,7 @@ An example .env is at `cp .env.example .env`
 
 ### What I'd build next
 
+- **Add unit test** to check everything is working as expected
 - **Live build logs** streamed to the UI via WebSockets — the single highest-impact UX improvement
 - **BetterAuth multi-tenancy** — users own their deployments, isolated by org
 - **Branch deployments** — deploy a specific branch or commit SHA, not just the default branch
